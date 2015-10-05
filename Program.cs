@@ -13,7 +13,9 @@ namespace ConsoleApplication1
         }
         virtual public string AnimalType { get; private set; }
         public string Name { get; private set; }
+        virtual public string Talk() { return ""; }
     }
+  
 
     class Dog : Animal {
         public Dog(string name):base(name)
@@ -27,6 +29,7 @@ namespace ConsoleApplication1
                 return "dog";
             }
         }
+        public override string Talk() { return "汪汪"; } 
     }
 
     class Cat : Animal
@@ -42,29 +45,28 @@ namespace ConsoleApplication1
                 return "cat";
             }
         }
+        public override string Talk() { return "喵喵"; } 
+ 
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            List<Animal> animals = new List<Animal>()
-            {
-                new Dog("dog1"),
-                new Dog("dog2"),
-                new Cat("cat1")
-            };
 
-            foreach (var animal in animals)
-            {
-                if (animal.AnimalType == "dog")
-                {
-                    Console.WriteLine(animal.Name + "汪汪");
-                } else if (animal.AnimalType == "cat")
-                {
-                    Console.WriteLine(animal.Name + "喵喵");
-                }
-            }
+
+            List<Animal> animals = new List<Animal>()
+             {
+                 new Dog("dog1"),
+                 new Dog("dog2"),
+                 new Cat("cat1")
+             };
+            
+             foreach (var animal in animals)
+             {
+                 Console.WriteLine(animal.Name + animal.Talk()); 
+             }
+            
         }
     }
 
